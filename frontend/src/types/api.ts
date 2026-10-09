@@ -35,11 +35,13 @@ export type ManualMenuResult = {
   restaurant_name: string;
   total_dishes_added: number;
   created_at?: string;
+  dishes?: ExtractedDish[];
 };
 
 export type ExtractedDish = {
   id: string;
   name: string;
+  description?: string;
   price: number;
   cuisine: string;
   ingredients: string[];

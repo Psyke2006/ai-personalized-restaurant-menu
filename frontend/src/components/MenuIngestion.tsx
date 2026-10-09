@@ -118,10 +118,23 @@ export function MenuIngestion({ onMenuLoaded }: MenuIngestionProps) {
         body: JSON.stringify(samplePayload),
       });
 
-      const unifiedDishes: UnifiedDish[] = SAMPLE_MENU_DISHES.map((d, index) => ({
-        ...d,
-        id: `d-sample-${index + 1}`,
-      }));
+      const unifiedDishes: UnifiedDish[] =
+        result.dishes && result.dishes.length > 0
+          ? result.dishes.map((d) => ({
+              id: d.id,
+              name: d.name,
+              description: d.description,
+              price: d.price,
+              cuisine: d.cuisine,
+              ingredients: d.ingredients || [],
+              diet_type: d.diet_type,
+              spice_level: d.spice_level,
+              health_tags: d.health_tags || [],
+            }))
+          : SAMPLE_MENU_DISHES.map((d, index) => ({
+              ...d,
+              id: `d-sample-${index + 1}`,
+            }));
 
       onMenuLoaded(result.menu_id, unifiedDishes, result.restaurant_name);
     } catch {
@@ -206,10 +219,23 @@ export function MenuIngestion({ onMenuLoaded }: MenuIngestionProps) {
         body: JSON.stringify(payload),
       });
 
-      const unifiedDishes: UnifiedDish[] = formattedDishes.map((d, index) => ({
-        ...d,
-        id: `d-manual-${index + 1}`,
-      }));
+      const unifiedDishes: UnifiedDish[] =
+        result.dishes && result.dishes.length > 0
+          ? result.dishes.map((d) => ({
+              id: d.id,
+              name: d.name,
+              description: d.description,
+              price: d.price,
+              cuisine: d.cuisine,
+              ingredients: d.ingredients || [],
+              diet_type: d.diet_type,
+              spice_level: d.spice_level,
+              health_tags: d.health_tags || [],
+            }))
+          : formattedDishes.map((d, index) => ({
+              ...d,
+              id: `d-manual-${index + 1}`,
+            }));
 
       onMenuLoaded(result.menu_id, unifiedDishes, result.restaurant_name);
     } catch (err) {

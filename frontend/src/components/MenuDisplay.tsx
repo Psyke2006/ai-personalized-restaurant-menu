@@ -248,7 +248,7 @@ export function MenuDisplay({ restaurantName, menuId, dishes, profile }: MenuDis
         <div className="space-y-4">
           {!ranking ? (
             <div className="p-8 text-center bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-500">
-              Click <span className="font-semibold text-orange-600">"⚡ Personalize Menu"</span> above to compute rule-based match scores and explanations tailored to your profile.
+              Click <span className="font-semibold text-orange-600">&quot;⚡ Personalize Menu&quot;</span> above to compute rule-based match scores and explanations tailored to your profile.
             </div>
           ) : ranking.recommended_dishes.length === 0 ? (
             <div className="p-6 text-center text-slate-500">No compatible recommendations found matching your parameters.</div>
